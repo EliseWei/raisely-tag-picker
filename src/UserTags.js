@@ -3,7 +3,7 @@ import { Tag } from './Tag';
 import { AddTag } from './AddTag';
 import { useUserTags, useAllTags } from './hooks';
 
-export function UserTags({ title, user }) {
+export function UserTags({ user }) {
   const allTags = useAllTags();
   const userTags = useUserTags(user.uuid);
 
@@ -16,7 +16,7 @@ export function UserTags({ title, user }) {
   return (
     <ul className="userTags">
       {userTagObjects.map((tag) => (
-        <Tag key={tag.uuid} user={user} tag={tag} deleteTag={userTags.remove} />
+        <Tag key={tag.uuid} user={user} tag={tag} removeTag={userTags.remove} />
       ))}
       <AddTag
         user={user}
