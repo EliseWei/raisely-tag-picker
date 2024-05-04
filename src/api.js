@@ -57,7 +57,7 @@ const users = [
   {
     uuid: '1111-2222-3333-4444',
     fullName: 'Aizah Wilkerson',
-    tags: ['aaaa-bbbb-cccc-dddd', 'eeee-ffff-gggg-hhhh'],
+    tags: ['aaaa-bbbb-cccc-dddd'],
   },
 ];
 

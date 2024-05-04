@@ -1,20 +1,9 @@
 import './styles.css';
-
+import * as React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
-import * as React from 'react';
-
-import {
-  fetchTags,
-  createTag,
-  fetchUser,
-  fetchUserTags,
-  assignUserTag,
-  removeUserTag,
-} from './api';
-
-import { UserTags } from './Tags';
+import { fetchUser } from './api';
+import { UserTags } from './UserTags';
 
 function UserProfile({ uuid }) {
   const [user, setUser] = React.useState(null);

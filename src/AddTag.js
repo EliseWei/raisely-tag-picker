@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchTags, assignUserTag, createTag } from './api';
 import { Search } from './Search';
 
 export function AddTag({ user, assignTag, createTag }) {
