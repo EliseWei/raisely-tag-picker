@@ -1,0 +1,201 @@
+:root {
+  --shade: #33333333;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.userTags {
+  list-style: none;
+  display: flex;
+  max-width: calc(100% - 24px);
+  flex-wrap: wrap;
+}
+.tag {
+  border-radius: 18px;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 0 2px var(--shade);
+  position: relative;
+  margin-bottom: 8px;
+}
+.color-0 {
+  background-color: #c8e8ff;
+}
+.color-1 {
+  background-color: #b2419a;
+  color: white;
+}
+.color-2 {
+  background-color: #b7edd5;
+}
+.color-3 {
+  background-color: #edb7b7;
+}
+.color-4 {
+  background-color: #4654b2;
+  color: white;
+}
+.tag button {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  max-width: 0px;
+  transition: all 0.2s linear;
+  position: relative;
+  left: 5px;
+  border-radius: 50%;
+}
+.tag:hover button,
+.tag:focus-within button {
+  max-width: 21px;
+}
+.tag button:focus {
+  outline: solid 1px currentColor;
+}
+.tag button::after {
+  color: inherit;
+  content: '✕';
+  box-sizing: border-box;
+  font-size: 18px;
+  display: block;
+  padding-left: 3px;
+  padding-right: 3px;
+  width: 21px;
+  height: 21px;
+}
+
+.tag button:hover::after,
+.tag button:focus::after {
+  background: var(--shade);
+}
+
+.tag + .tag {
+  margin-left: 8px;
+}
+
+.addWrapper {
+  position: relative;
+  margin-left: 8px;
+}
+.addBtn,
+.queryListAddItem {
+  background: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  align-items: center;
+  display: flex;
+  padding: 0;
+  transition: opacity 0.2s ease-in;
+  cursor: pointer;
+  color: #5b536a;
+}
+.addBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.addBtn span {
+  max-width: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-in;
+}
+.userTags:hover .addBtn,
+.addBtn:focus {
+  opacity: 1;
+}
+.addBtn:focus {
+  outline: none;
+  background: lightgray;
+  border-radius: 15px;
+  padding-right: 6px;
+}
+.addBtn::before {
+  content: '✕';
+  color: #5b536a;
+  font-weight: bold;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  font-size: 17px;
+  display: block;
+  width: 28px;
+  height: 28px;
+  padding: 3px;
+  border-radius: 50%;
+  background: lightgray;
+  margin-right: 7px;
+  border: solid 1px transparent;
+}
+.addBtn:hover::before,
+.queryListAddItem:hover::before {
+  border-color: darkgray;
+}
+.addBtn:hover span,
+.addBtn:focus span {
+  max-width: 100px;
+}
+.addWrapper.searchActive .addBtn {
+  display: none;
+}
+.query {
+  display: none;
+}
+.addWrapper.searchActive .query {
+  display: block;
+}
+.queryInput {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 29px;
+  width: 130px;
+  border-radius: 1em;
+  border: solid 2px darkgrey;
+  margin-bottom: 4px;
+}
+.queryList {
+  list-style: none;
+  text-align: left;
+  margin: 0;
+  padding: 3px;
+  background: white;
+  border: solid 1px #4654b2;
+  border-radius: 15px;
+  position: absolute;
+}
+.queryListItem {
+  padding: 3px 8px;
+  border-radius: 15px;
+}
+.queryListAddItem {
+  border-radius: 15px;
+  padding-right: 5px;
+}
+.queryListItem.active,
+.queryListAddItem.active {
+  background: lightgrey;
+}
+.queryListAddItem::before {
+  content: '✕';
+  color: #5b536a;
+  font-weight: bold;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  font-size: 12px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  background: lightgray;
+  margin-right: 5px;
+  border: solid 1px transparent;
+  align-items: center;
+  justify-content: center;
+}
