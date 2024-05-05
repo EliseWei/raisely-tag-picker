@@ -63,6 +63,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Gets Safari to play nice.
+https://stackoverflow.com/questions/16348489/is-there-a-way-to-apply-styles-to-safari-only#25975282 */
+_::-webkit-full-page-media,
+_:future,
+:root .tag button {
   line-height: 1.1;
 }
 
