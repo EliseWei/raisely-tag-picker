@@ -1,4 +1,4 @@
-import { Fragment, useState, useRef, useEffect } from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { useAllTags } from '../hooks';
 
@@ -11,7 +11,7 @@ export function Search({
   searchActive,
   setSearchActive,
 }) {
-  const [selected, setSelected] = useState('');
+  const [selected] = useState('');
   const [query, setQuery] = useState('');
   const { data: listItems } = useAllTags([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -68,10 +68,14 @@ export function Search({
       <Combobox as="div" value={selected} onChange={onChange} nullable>
         <div className="queryInputWrap">
           <Combobox.Input
-            aria-label="Tag name"
+            aria-label="Name of tag to add"
             className="queryInput"
             displayValue={(item) => item.title}
             onChange={(event) => setQuery(event.target.value)}
+            // Given that the input is only available immediately after
+            // being explicitly expanded by the user, it should be safe
+            // to autofocus it.
+            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={true}
           />
         </div>
@@ -99,7 +103,7 @@ export function Search({
                       >
                         {item.title}
                       </span>
-                      {selected ? <span className={`selected`}></span> : null}
+                      {selected ? <span className={'selected'}></span> : null}
                     </>
                   )}
                 </Combobox.Option>

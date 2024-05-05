@@ -1,7 +1,6 @@
 import './styles/index.css';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { UserProfile } from './components/UserProfile';
 
 // Let's pretend we're getting this from the route
@@ -19,7 +18,6 @@ export default function App() {
         <h1>User Tags Sandbox</h1>
         <UserProfile uuid={params.uuid} />
       </div>
-      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );
 }
