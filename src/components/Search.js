@@ -15,9 +15,9 @@ export function Search({
   const { data: listItems } = useAllTags([]);
 
   const onChange = (value) => {
-    if (value.uuid) {
+    if (value && value.uuid) {
       assignHandler(value);
-    } else if (value.title) {
+    } else if (value && value.title) {
       createHandler(query);
     }
     setQuery('');
