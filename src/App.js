@@ -19,7 +19,7 @@ export default function App() {
         <h1>User Tags Sandbox</h1>
         <UserProfile uuid={params.uuid} />
       </div>
-      <ReactQueryDevtools />
+      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   );
 }
