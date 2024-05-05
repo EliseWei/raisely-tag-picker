@@ -8,7 +8,6 @@ export function AddTag({ user, assignTag, createTag }) {
   React.useEffect(() => {
     const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
-        console.log('outside click');
         setSearchActive(false);
       }
     };
