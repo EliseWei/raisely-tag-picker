@@ -3,6 +3,18 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import * as API from './api';
 
+export function useUser(userId) {
+  const query = useQuery({
+    queryKey: ['user', userId],
+    queryFn: () => API.fetchUser(userId),
+    staleTime: Infinity,
+  });
+
+  return {
+    ...query,
+  };
+}
+
 export function useUserTags(userId) {
   const query = useQuery({
     queryKey: ['userTags', userId],
