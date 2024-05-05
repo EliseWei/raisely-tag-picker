@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { UserTags } from './UserTags';
-import { useUser } from './hooks';
+import { useUser } from '../hooks';
 
 export function UserProfile({ uuid }) {
   const { data: user } = useUser(uuid);

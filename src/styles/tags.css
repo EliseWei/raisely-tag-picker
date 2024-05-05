@@ -1,0 +1,147 @@
+/* Wrapping unordered list element */
+.userTags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 21px 0 0;
+  transition: padding 0.2s linear;
+}
+.userTags:has(.tag:hover, .tag button:focus) {
+  padding: 0;
+  transition: padding 0.2s linear 0.5s;
+}
+
+/* Tags themselves */
+.tag {
+  border-radius: 18px;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 0 2px var(--shade);
+  position: relative;
+  margin-bottom: 8px;
+  color: var(--shade-text);
+  font-weight: bold;
+}
+
+/* Tag color schemes */
+.color-0 {
+  background-color: #c8e8ff;
+}
+.color-1 {
+  background-color: #b2419a;
+}
+.color-2 {
+  background-color: #b7edd5;
+}
+.color-3 {
+  background-color: #edb7b7;
+}
+.color-4 {
+  background-color: #4654b2;
+}
+
+/* Light text for dark backgrounds */
+.color-1,
+.color-4 {
+  color: var(--tint-text);
+}
+
+/* Tag deletion button */
+.tag button {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  max-width: 0px;
+  transition: all 0.2s linear;
+  position: relative;
+  left: 5px;
+  border-radius: 50%;
+}
+
+.tag:hover button,
+.tag:focus-within button {
+  max-width: 21px;
+  transition: all 0.2s linear 0.5s;
+}
+.tag button:focus {
+  outline: solid 1px currentColor;
+}
+.tag button::after {
+  color: inherit;
+  content: '✕';
+  box-sizing: border-box;
+  font-size: 18px;
+  display: block;
+  padding-left: 3px;
+  padding-right: 3px;
+  width: 21px;
+  height: 21px;
+}
+.tag button:focus::after {
+  background: var(--shade);
+}
+
+/* Relationships between tags */
+.tag + .tag {
+  margin-left: 8px;
+}
+
+/* Tag deleting state */
+.tag button.deleting .lds-ring {
+  display: inline-block;
+}
+.tag button.deleting::after {
+  visibility: hidden;
+}
+.tag button.deleting,
+.tag button.deleting:focus {
+  border: 0;
+  outline: 0;
+}
+
+/* Deleting animation */
+.lds-ring,
+.lds-ring div {
+  box-sizing: border-box;
+}
+.lds-ring {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  margin: 2px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: currentColor transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

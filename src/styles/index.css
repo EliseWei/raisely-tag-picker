@@ -1,0 +1,10 @@
+@import url('./colors.css');
+@import url('./tags.css');
+@import url('./addTag.css');
+
+.App {
+  font-family: sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}

@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
-import { useAllTags } from './hooks';
+import { useAllTags } from '../hooks';
 
 export function Search({
   assignHandler,
@@ -10,12 +10,13 @@ export function Search({
 }) {
   const [selected, setSelected] = useState('');
   const [query, setQuery] = useState('');
-  const { data: listItems } = useAllTags();
+  const { data: listItems } = useAllTags([]);
 
   const onChange = (value) => {
+    console.log(value);
     if (value.uuid) {
       assignHandler(value);
-    } else {
+    } else if (value.title) {
       createHandler(query);
     }
     setQuery('');
@@ -37,9 +38,9 @@ export function Search({
     <Transition
       show={searchActive}
       as={Fragment}
-      afterLeave={() => setQuery('')}
+      beforeLeave={() => setQuery('')}
     >
-      <Combobox value={selected} onChange={onChange}>
+      <Combobox value={selected} onChange={onChange} nullable>
         {({ open }) => (
           <div className={`query ${open ? 'open' : 'closed'}`}>
             <div className="queryInputWrap">
@@ -48,6 +49,7 @@ export function Search({
                 className="queryInput"
                 displayValue={(item) => item.title}
                 onChange={(event) => setQuery(event.target.value)}
+                autoFocus={true}
               />
             </div>
             <Transition as={Fragment} afterLeave={() => setQuery('')}>

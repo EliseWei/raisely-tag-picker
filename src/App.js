@@ -1,8 +1,8 @@
-import './styles.css';
+import './styles/index.css';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { UserProfile } from './UserProfile';
+import { UserProfile } from './components/UserProfile';
 
 // Let's pretend we're getting this from the route
 // e.g. `get /users/:uuid`

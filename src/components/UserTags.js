@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tag } from './Tag';
 import { AddTag } from './AddTag';
-import { useUserTags, useAllTags } from './hooks';
+import { useUserTags, useAllTags } from '../hooks';
 
 export function UserTags({ user }) {
   const allTags = useAllTags();

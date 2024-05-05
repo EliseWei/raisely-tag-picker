@@ -1,0 +1,125 @@
+.addWrapper {
+  position: relative;
+  margin-left: 8px;
+  width: 130px;
+}
+.addBtn,
+.queryListAddItem {
+  background: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  align-items: center;
+  display: flex;
+  padding: 0;
+  transition: opacity 0.2s ease-in;
+  cursor: pointer;
+  color: var(--dark-purple);
+}
+.addBtn {
+  opacity: 0;
+}
+.addBtn span {
+  max-width: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-in;
+}
+.userTags:hover .addBtn,
+.addBtn:focus {
+  opacity: 1;
+}
+.addBtn:focus {
+  outline: none;
+  background: var(--pale-gray);
+  border-radius: 15px;
+  padding-right: 6px;
+}
+.addBtn::before {
+  content: '✕';
+  color: var(--med-dark-gray);
+  font-weight: bold;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  font-size: 17px;
+  display: block;
+  width: 28px;
+  height: 28px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--pale-gray);
+  margin-right: 7px;
+  border: solid 1px transparent;
+}
+.addBtn:hover::before {
+  border-color: var(--medium-gray);
+  color: var(--dark-gray);
+}
+.addBtn:hover span,
+.addBtn:focus span {
+  max-width: 100px;
+}
+.addWrapper.searchActive .addBtn {
+  display: none;
+}
+.query {
+  display: none;
+}
+.addWrapper.searchActive .query {
+  display: block;
+}
+.queryInput {
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 29px;
+  width: 130px;
+  border-radius: 1em;
+  border: solid 2px var(--dark-gray);
+  margin-bottom: 4px;
+}
+.queryInput:focus {
+  outline: none;
+}
+.queryList {
+  list-style: none;
+  text-align: left;
+  margin: 0;
+  padding: 3px;
+  background: white;
+  border: solid 1px var(--medium-purple);
+  border-radius: 15px;
+  position: absolute;
+}
+.queryListItem {
+  padding: 3px 8px;
+  border-radius: 15px;
+  color: var(--med-dark-gray);
+}
+.queryListAddItem {
+  border-radius: 15px;
+  padding: 3px 5px 3px 3px;
+  margin: 0 3px;
+  color: var(--dark-purple);
+}
+.queryListItem.active,
+.queryListAddItem.active {
+  background: var(--light-purple);
+  color: var(--medium-purple);
+}
+.queryListAddItem::before {
+  content: '✕';
+  color: var(--dark-gray);
+  font-weight: bold;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  font-size: 11px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--pale-gray);
+  margin-right: 5px;
+  border: solid 1px transparent;
+  align-items: center;
+  justify-content: center;
+}

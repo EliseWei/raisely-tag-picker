@@ -1,0 +1,13 @@
+:root {
+  --shade: #33333333;
+  --shade-text: #00000077;
+  --tint-text: #ffffffbb;
+  --dark-purple: rgb(24, 25, 60);
+  --medium-purple: rgb(97, 56, 216);
+  --light-purple: rgb(238, 233, 255);
+  --pale-gray: rgb(241, 241, 247);
+  --medium-gray: rgb(209, 210, 229);
+  --med-dark-gray: rgb(156, 157, 170);
+  --dark-gray: rgb(111, 107, 119);
+  --darker-gray: rgb(38, 40, 97);
+}
