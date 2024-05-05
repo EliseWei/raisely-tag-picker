@@ -54,7 +54,7 @@
   padding: 3px;
   border-radius: 50%;
   background: var(--pale-gray);
-  margin-right: 7px;
+  margin-right: 5px;
   border: solid 1px transparent;
 }
 .addBtn:hover::before {

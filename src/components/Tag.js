@@ -14,7 +14,7 @@ export function Tag({ user, tag, removeTag }) {
             tagId: tag.uuid,
           });
         }}
-        title="Delete"
+        title={`Delete ${tag.title}`}
       >
         <div className="lds-ring">
           <div></div>
