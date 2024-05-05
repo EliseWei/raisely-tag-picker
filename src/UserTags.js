@@ -14,15 +14,23 @@ export function UserTags({ user }) {
   if (!userTagObjects) return null;
 
   return (
-    <ul className="userTags">
-      {userTagObjects.map((tag) => (
-        <Tag key={tag.uuid} user={user} tag={tag} removeTag={userTags.remove} />
-      ))}
-      <AddTag
-        user={user}
-        assignTag={userTags.assign}
-        createTag={allTags.create}
-      />
-    </ul>
+    <>
+      <h2>Tags</h2>
+      <ul className="userTags">
+        {userTagObjects.map((tag) => (
+          <Tag
+            key={tag.uuid}
+            user={user}
+            tag={tag}
+            removeTag={userTags.remove}
+          />
+        ))}
+        <AddTag
+          user={user}
+          assignTag={userTags.assign}
+          createTag={allTags.create}
+        />
+      </ul>
+    </>
   );
 }

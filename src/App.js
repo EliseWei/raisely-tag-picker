@@ -17,9 +17,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <h1>User Tags Sandbox</h1>
-        <div className="App">
-          <UserProfile uuid={params.uuid} />
-        </div>
+        <UserProfile uuid={params.uuid} />
       </div>
       <ReactQueryDevtools />
     </QueryClientProvider>
