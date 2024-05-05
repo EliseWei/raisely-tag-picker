@@ -6,7 +6,7 @@ export function Search({
   assignHandler,
   createHandler,
   userTags,
-  setSearchActive,
+  searchActive,
 }) {
   const [selected, setSelected] = useState('');
   const [query, setQuery] = useState('');
@@ -34,62 +34,70 @@ export function Search({
         );
 
   return (
-    <Combobox value={selected} onChange={onChange}>
-      {({ open }) => (
-        <div className={`query ${open ? 'open' : 'closed'}`}>
-          <div className="queryInputWrap">
-            <Combobox.Input
-              aria-label="Tag name"
-              className="queryInput"
-              displayValue={(item) => item.title}
-              onChange={(event) => setQuery(event.target.value)}
-            />
+    <Transition
+      show={searchActive}
+      as={Fragment}
+      afterLeave={() => setQuery('')}
+    >
+      <Combobox value={selected} onChange={onChange}>
+        {({ open }) => (
+          <div className={`query ${open ? 'open' : 'closed'}`}>
+            <div className="queryInputWrap">
+              <Combobox.Input
+                aria-label="Tag name"
+                className="queryInput"
+                displayValue={(item) => item.title}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </div>
+            <Transition as={Fragment} afterLeave={() => setQuery('')}>
+              <Combobox.Options className="queryList">
+                {(filteredList?.length === 0 && <p>No un-selected tags</p>) ||
+                  null}
+                {(filteredList?.length &&
+                  filteredList?.map((item) => (
+                    <Combobox.Option
+                      key={item.uuid}
+                      className={({ active }) =>
+                        `queryListItem ${active ? 'active' : ''}`
+                      }
+                      value={item}
+                    >
+                      {({ selected, active }) => (
+                        <>
+                          <span
+                            className={`block truncate ${
+                              selected ? 'font-medium' : 'font-normal'
+                            }`}
+                          >
+                            {item.title}
+                          </span>
+                          {selected ? (
+                            <span className={`selected`}></span>
+                          ) : null}
+                        </>
+                      )}
+                    </Combobox.Option>
+                  ))) ||
+                  null}
+                {query.length > 0 &&
+                  !listItems.some(
+                    (item) => item.title.toLowerCase() === query.toLowerCase()
+                  ) && (
+                    <Combobox.Option
+                      className={({ active }) =>
+                        `queryListAddItem ${active ? 'active' : ''}`
+                      }
+                      value={{ uuid: null, title: query }}
+                    >
+                      Create Tag
+                    </Combobox.Option>
+                  )}
+              </Combobox.Options>
+            </Transition>
           </div>
-          <Transition as={Fragment} afterLeave={() => setQuery('')}>
-            <Combobox.Options className="queryList">
-              {(filteredList?.length === 0 && <p>No un-selected tags</p>) ||
-                null}
-              {(filteredList?.length &&
-                filteredList?.map((item) => (
-                  <Combobox.Option
-                    key={item.uuid}
-                    className={({ active }) =>
-                      `queryListItem ${active ? 'active' : ''}`
-                    }
-                    value={item}
-                  >
-                    {({ selected, active }) => (
-                      <>
-                        <span
-                          className={`block truncate ${
-                            selected ? 'font-medium' : 'font-normal'
-                          }`}
-                        >
-                          {item.title}
-                        </span>
-                        {selected ? <span className={`selected`}></span> : null}
-                      </>
-                    )}
-                  </Combobox.Option>
-                ))) ||
-                null}
-              {query.length > 0 &&
-                !listItems.some(
-                  (item) => item.title.toLowerCase() === query.toLowerCase()
-                ) && (
-                  <Combobox.Option
-                    className={({ active }) =>
-                      `queryListAddItem ${active ? 'active' : ''}`
-                    }
-                    value={{ uuid: null, title: query }}
-                  >
-                    Create Tag
-                  </Combobox.Option>
-                )}
-            </Combobox.Options>
-          </Transition>
-        </div>
-      )}
-    </Combobox>
+        )}
+      </Combobox>
+    </Transition>
   );
 }
