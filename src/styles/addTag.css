@@ -1,7 +1,7 @@
 /* Container that appears flexed with the tags but wraps the adding UI */
 .addWrapper {
   position: relative;
-  width: 130px;
+  width: 8.13rem;
 }
 
 /* Styles shared by the big "ADD" button and the "CREATE NEW" button inside the dropdown */
@@ -48,8 +48,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.87rem;
+  height: 1.87rem;
   padding: 3px;
   border-radius: 50%;
   background: var(--pale-gray);
@@ -76,7 +76,7 @@
   display: block;
 }
 .queryInputWrap {
-  height: 1.75rem;
+  height: 1.87rem;
 }
 
 /* The text input */
@@ -84,9 +84,9 @@
   position: absolute;
   box-sizing: border-box;
   padding: 5px 10px;
-  height: 1.75rem;
+  height: 1.87rem;
   width: 8.13rem;
-  border-radius: 1em;
+  border-radius: 1.5em;
   border: solid 2px var(--dark-gray);
 }
 .queryInput:focus {
