@@ -75,7 +75,7 @@ export function Search({
             // Given that the input is only available immediately after
             // being explicitly expanded by the user, it should be safe
             // to autofocus it.
-            // eslint-disable-next-line jsx-a11y/no-autofocus
+            // eslint-disable-next-line
             autoFocus={true}
           />
         </div>
