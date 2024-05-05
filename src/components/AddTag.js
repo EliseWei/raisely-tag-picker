@@ -3,21 +3,6 @@ import { Search } from './Search';
 
 export function AddTag({ user, assignTag, createTag }) {
   const [searchActive, setSearchActive] = React.useState(false);
-  const ref = React.useRef(null);
-
-  React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setSearchActive(false);
-      }
-    };
-    document.addEventListener('click', handleClickOutside, true);
-    document.addEventListener('focus', handleClickOutside, true);
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-      document.removeEventListener('focus', handleClickOutside, true);
-    };
-  }, []);
 
   const assignHandler = (tag) => {
     return assignTag.mutate({
@@ -35,10 +20,7 @@ export function AddTag({ user, assignTag, createTag }) {
   };
 
   return (
-    <li
-      ref={ref}
-      className={`addWrapper ${searchActive ? 'searchActive' : ''}`}
-    >
+    <li className={`addWrapper ${searchActive ? 'searchActive' : ''}`}>
       <button className="addBtn" onClick={() => setSearchActive(!searchActive)}>
         <span>Add</span>
       </button>
@@ -47,6 +29,7 @@ export function AddTag({ user, assignTag, createTag }) {
         createHandler={createHandler}
         userTags={user.tags}
         searchActive={searchActive}
+        setSearchActive={setSearchActive}
       />
     </li>
   );

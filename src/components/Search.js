@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useRef, useEffect } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { useAllTags } from '../hooks';
 
@@ -9,16 +9,39 @@ export function Search({
   createHandler,
   userTags,
   searchActive,
+  setSearchActive,
 }) {
   const [selected, setSelected] = useState('');
   const [query, setQuery] = useState('');
   const { data: listItems } = useAllTags([]);
+  const [isFocused, setIsFocused] = useState(false);
+  const comboboxRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (comboboxRef.current && !comboboxRef.current.contains(event.target)) {
+        setIsFocused(false);
+        setSearchActive(false);
+      } else {
+        setIsFocused(true);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('focusin', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('focusin', handleClickOutside);
+    };
+  }, []);
 
   const onChange = (value) => {
-    if (value && value.uuid) {
-      assignHandler(value);
-    } else if (value && value.title) {
-      createHandler(query);
+    if (isFocused) {
+      if (value && value.uuid) {
+        assignHandler(value);
+      } else if (value && value.title) {
+        createHandler(query);
+      }
     }
     setQuery('');
   };
@@ -38,7 +61,8 @@ export function Search({
   return (
     <Transition
       show={searchActive}
-      as={Fragment}
+      as="div"
+      ref={comboboxRef}
       beforeLeave={() => setQuery('')}
     >
       <Combobox as="div" value={selected} onChange={onChange} nullable>
