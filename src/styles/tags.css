@@ -85,7 +85,9 @@ _:future,
 .tag .btnIcon {
   box-sizing: border-box;
   font-size: 1.13rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 3px;
   width: 1.25rem;
   height: 1.25rem;
