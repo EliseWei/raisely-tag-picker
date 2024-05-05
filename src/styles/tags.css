@@ -51,7 +51,7 @@
 .tag button {
   color: inherit;
   background: transparent;
-  border: 0;
+  border: solid 1px transparent;
   padding: 0;
   overflow: hidden;
   cursor: pointer;
@@ -59,16 +59,21 @@
   transition: all 0.2s linear;
   position: relative;
   left: 5px;
-  border-radius: 50%;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
 }
 
 .tag:hover button,
 .tag:focus-within button {
-  max-width: 1.25rem;
+  max-width: 1.4rem;
   transition: all 0.2s linear 0.5s;
 }
 .tag button:focus {
-  outline: solid 1px currentColor;
+  border: solid 1px currentColor;
+  outline: none;
 }
 .tag .btnIcon {
   box-sizing: border-box;
