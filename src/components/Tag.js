@@ -16,6 +16,9 @@ export function Tag({ user, tag, removeTag }) {
         }}
         title={`Delete ${tag.title}`}
       >
+        <div className="btnIcon" aria-hidden>
+          ✕
+        </div>
         <div className="lds-ring">
           <div></div>
           <div></div>

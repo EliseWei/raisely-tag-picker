@@ -22,6 +22,9 @@ export function AddTag({ user, assignTag, createTag }) {
   return (
     <li className={`addWrapper ${searchActive ? 'searchActive' : ''}`}>
       <button className="addBtn" onClick={() => setSearchActive(!searchActive)}>
+        <div className="btnIcon" aria-hidden>
+          ✕
+        </div>
         <span>Add</span>
       </button>
       <Search

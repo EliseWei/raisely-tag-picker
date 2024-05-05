@@ -115,6 +115,9 @@ export function Search({
                   }
                   value={{ uuid: null, title: query }}
                 >
+                  <div className="btnIcon" aria-hidden>
+                    ✕
+                  </div>
                   Create Tag
                 </Combobox.Option>
               )}

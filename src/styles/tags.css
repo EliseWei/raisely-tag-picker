@@ -70,18 +70,15 @@
 .tag button:focus {
   outline: solid 1px currentColor;
 }
-.tag button::after {
-  color: inherit;
-  content: '✕';
+.tag .btnIcon {
   box-sizing: border-box;
   font-size: 1.13rem;
   display: block;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 0 3px;
   width: 1.25rem;
   height: 1.25rem;
 }
-.tag button:focus::after {
+.tag button:focus .btnIcon {
   background: var(--shade);
 }
 
@@ -89,7 +86,7 @@
 .tag button.deleting .lds-ring {
   display: inline-block;
 }
-.tag button.deleting::after {
+.tag button.deleting .btnIcon {
   visibility: hidden;
 }
 .tag button.deleting,

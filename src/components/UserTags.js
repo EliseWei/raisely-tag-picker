@@ -16,7 +16,7 @@ export function UserTags({ user }) {
   return (
     <>
       <h2>Tags</h2>
-      <ul className="userTags">
+      <ul className="userTags" aria-live="polite">
         {userTagObjects.map((tag) => (
           <Tag
             key={tag.uuid}
